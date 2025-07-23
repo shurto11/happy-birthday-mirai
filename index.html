@@ -2,17 +2,18 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ルーレット</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>誕プレ</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
-      background: linear-gradient(#a4dc95, #2e8b57);
-      margin: 50px;
+      background: #c3e5de;
+      margin: 20px;
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 28px;
       margin-bottom: 10px;
       color: #333;
     }
@@ -20,16 +21,17 @@
     #arrow {
       width: 0;
       height: 0;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-bottom: 30px solid red;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid red;
       margin: 0 auto;
     }
 
     #wheel-container {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 80vw;
+      max-width: 400px;
+      aspect-ratio: 1 / 1;
       margin: 20px auto;
     }
 
@@ -43,8 +45,8 @@
 
     .segment {
       position: absolute;
-      width: 200px;
-      height: 200px;
+      width: 50%;
+      height: 50%;
       top: 0;
       left: 0;
       transform-origin: 100% 100%;
@@ -59,6 +61,7 @@
       transform-origin: center;
       color: black;
       font-weight: bold;
+      font-size: 3vw;
     }
 
     .segment:nth-child(1) {
@@ -82,16 +85,48 @@
     }
 
     #startButton {
-      font-size: 20px;
-      padding: 10px 25px;
+      font-size: 18px;
+      padding: 10px 20px;
       margin-top: 20px;
       cursor: pointer;
     }
 
     #result {
-      margin-top: 25px;
-      font-size: 26px;
+      margin-top: 20px;
+      font-size: 20px;
       font-weight: bold;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #878c8e;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    /* モバイル専用スタイル */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .segment span {
+        font-size: 4vw;
+      }
+
+      #result {
+        font-size: 18px;
+      }
+
+      #startButton {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
@@ -140,16 +175,7 @@
   </script>
 
 </body>
-<footer style="
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #878c8e;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  ">
+<footer>
   © 2025 Shurto_11
 </footer>
 </html>
