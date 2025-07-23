@@ -7,21 +7,56 @@
   <style>
     body {
       font-family: sans-serif;
-      background: #c3e5de;
-      margin: 0;
-      padding: 0 20px 60px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
+      background: #c3e5de;
+      margin: 20px;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-size: 56px; /* 2倍 */
+      margin-bottom: 20px;
       color: #333;
+    }
+
+    .segment span {
+      transform: rotate(45deg);
+      transform-origin: center;
+      color: black;
+      font-weight: bold;
+      font-size: 1.5vw; /* 半分 */
+    }
+
+    #startButton {
+      font-size: 36px; /* 2倍 */
+      padding: 20px 40px; /* 2倍 */
+      margin-top: 40px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 40px;
+      font-size: 40px; /* 2倍 */
+      font-weight: bold;
+    }
+
+    /* スマホ用調整 */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .segment span {
+        font-size: 3vw; /* 元は6vwくらいに相当したため半分 */
+      }
+
+      #result {
+        font-size: 36px;
+      }
+
+      #startButton {
+        font-size: 32px;
+        padding: 16px 32px;
+      }
     }
 
     #arrow {
@@ -30,7 +65,7 @@
       border-left: 15px solid transparent;
       border-right: 15px solid transparent;
       border-bottom: 25px solid red;
-      margin: 10px 0;
+      margin: 0 auto;
     }
 
     #wheel-container {
@@ -38,7 +73,7 @@
       width: 80vw;
       max-width: 400px;
       aspect-ratio: 1 / 1;
-      margin: 10px auto;
+      margin: 20px auto;
     }
 
     #wheel {
@@ -62,14 +97,6 @@
       align-items: center;
     }
 
-    .segment span {
-      transform: rotate(45deg);
-      transform-origin: center;
-      color: black;
-      font-weight: bold;
-      font-size: 3vw;
-    }
-
     .segment:nth-child(1) {
       background-color: #ffccff;
       transform: rotate(0deg);
@@ -90,19 +117,6 @@
       transform: rotate(270deg);
     }
 
-    #startButton {
-      font-size: 18px;
-      padding: 10px 20px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
     footer {
       position: fixed;
       bottom: 0;
@@ -113,25 +127,6 @@
       text-align: center;
       padding: 10px 0;
       font-size: 14px;
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 24px;
-      }
-
-      .segment span {
-        font-size: 4vw;
-      }
-
-      #result {
-        font-size: 18px;
-      }
-
-      #startButton {
-        font-size: 16px;
-        padding: 8px 16px;
-      }
     }
   </style>
 </head>
