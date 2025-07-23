@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ルーレット</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: linear-gradient(#a4dc95, #2e8b57);
+      margin: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    #arrow {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 30px solid red;
+      margin: 0 auto;
+    }
+
+    #wheel-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+    }
+
+    #wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .segment {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      top: 0;
+      left: 0;
+      transform-origin: 100% 100%;
+      clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .segment span {
+      transform: rotate(45deg);
+      transform-origin: center;
+      color: black;
+      font-weight: bold;
+    }
+
+    .segment:nth-child(1) {
+      background-color: #ffccff;
+      transform: rotate(0deg);
+    }
+
+    .segment:nth-child(2) {
+      background-color: #ccffff;
+      transform: rotate(90deg);
+    }
+
+    .segment:nth-child(3) {
+      background-color: #ffffcc;
+      transform: rotate(180deg);
+    }
+
+    .segment:nth-child(4) {
+      background-color: #ddffdd;
+      transform: rotate(270deg);
+    }
+
+    #startButton {
+      font-size: 20px;
+      padding: 10px 25px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ワーホリの行き先 (Where to Next?)</h1>
+  <div id="arrow"></div>
+
+  <div id="wheel-container">
+    <div id="wheel">
+      <div class="segment"><span>バンクーバー (Vancouver)</span></div>
+      <div class="segment"><span>トロント (Toronto)</span></div>
+      <div class="segment"><span>モントリオール (Montréal)</span></div>
+      <div class="segment"><span>ビクトリア (Victoria)</span></div>
+    </div>
+  </div>
+
+  <button id="startButton">START</button>
+  <div id="result"></div>
+
+  <script>
+    const wheel = document.getElementById("wheel");
+    const result = document.getElementById("result");
+    const button = document.getElementById("startButton");
+
+    const cities = ["バンクーバー (Vancouver)", "トロント (Toronto)", "モントリオール (Montréal)", "ビクトリア (Victoria)"];
+    let currentRotation = 0;
+
+    button.addEventListener("click", () => {
+      button.disabled = true;
+      result.textContent = "";
+
+      const extraRotation = Math.floor(Math.random() * 360);
+      const totalRotation = 360 * 5 + extraRotation;
+      currentRotation += totalRotation;
+
+      wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+      setTimeout(() => {
+        const finalAngle = (360 - (currentRotation % 360) + 45) % 360;
+        const index = Math.floor(finalAngle / 90) % 4;
+        result.textContent = `選ばれたのは「${cities[index]}」です！`;
+        button.disabled = false;
+      }, 5200);
+    });
+  </script>
+
+</body>
+<footer style="
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #878c8e;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  ">
+  © 2025 Shurto_11
+</footer>
+</html>
